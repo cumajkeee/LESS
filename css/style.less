@@ -13,6 +13,12 @@
 @tablet: ~"screen and (min-width: @{breakPoint2Start}) and (max-width: @{breakPoint2End})";
 @desktop: ~"screen and (min-width: @{breakPoint3Start})";
 
+.font(@size) {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: @size;
+}
+
 .content {
 	margin: 0 auto;
 	@media @mobile{
@@ -35,6 +41,35 @@
 		span {
 			font-size: 30px;
 			color: @lightblue-text;
+			font-weight: bold;
 		}
+	}
+}
+
+.nav {
+	background-color: @lightblue-menu;
+	text-align: center;
+	ul {
+		list-style: none;
+		border-bottom: 4px solid @menu-underline;
+	}
+	li {
+		position: relative;
+		.font(18px);
+		color: white;
+		padding: 18px 33px;
+		display: inline-block;
+	}
+	li.current:after {
+		position: absolute;
+		z-index: 2;
+		top: 54px;
+		left: 45%;
+		content: "";
+		width: 0;
+		height: 0;
+		border-right: 10px solid transparent;
+		border-top: 8px solid @lightblue-menu;
+		border-left: 10px solid transparent;
 	}
 }
