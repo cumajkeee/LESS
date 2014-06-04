@@ -1,0 +1,40 @@
+@lightblue-text: #6794b7;
+@lightblue-menu: #6b9ad0;
+@menu-underline: #c6defa;
+
+//* --- breakpoints --- *//
+@breakPoint1Start: 320px;
+@breakPoint1End: 767px;
+@breakPoint2Start: 768px;
+@breakPoint2End: 1023px;
+@breakPoint3Start: 1024px;
+
+@mobile: ~"screen and (min-width: @{breakPoint1Start}) and (max-width: @{breakPoint1End})";
+@tablet: ~"screen and (min-width: @{breakPoint2Start}) and (max-width: @{breakPoint2End})";
+@desktop: ~"screen and (min-width: @{breakPoint3Start})";
+
+.content {
+	margin: 0 auto;
+	@media @mobile{
+		width: 100%;
+	}
+	@media @tablet{
+		width: 100%;
+	}
+	@media @desktop{
+		width: 983px;
+	}
+
+}
+
+.logo-container {
+	a {
+		display: block;
+		text-decoration: none;
+		text-align: center;
+		span {
+			font-size: 30px;
+			color: @lightblue-text;
+		}
+	}
+}
