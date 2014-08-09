@@ -85,3 +85,28 @@ html, body {
 		background-position: right -22px;
 	}
 }
+
+.activeTriangle(@border-color, @main-color) {
+	position: relative;
+	&:before, &:after {
+		position: absolute;
+		content: "";
+		width: 0;
+		height: 0;
+		top: 100%;
+		left: 50%;
+		z-index: 2;
+	}
+	&:before {
+		margin-left: -12px;
+		border-style: solid;
+		border-width: 12px 12px 0 12px;
+		border-color: @border-color transparent transparent transparent;
+	}
+	&:after {
+		margin-left: -6px;
+		border-style: solid;
+		border-width: 7px 6px 0 6px;
+		border-color: @main-color transparent transparent transparent;
+	}
+}
