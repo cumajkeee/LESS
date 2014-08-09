@@ -1,7 +1,6 @@
 @import "base";
 
-.content {
-	min-height: 100%;
+header, main {
 	margin: 0 auto;
 	@media @mobile{
 		width: 100%;
@@ -12,6 +11,10 @@
 	@media @desktop{
 		width: 983px;
 	}
+}
+
+.content {
+	min-height: 100%;
 }
 
 header {
@@ -28,18 +31,42 @@ header {
 			background: url("../img/logo.png") no-repeat;
 			vertical-align: middle;
 		}
+		@media @mobile {
+			font-size: 24px;
+			font-weight: bold;
+			.logo {
+				width: 30px;
+				height: 30px;
+				background-size: cover;
+				vertical-align: middle;
+			}
+		}
 	}
 }
 
 nav {
+	.clearfix();
 	margin-bottom: 50px;
 	text-align: center;
-	.list {
-		background-color: @lightblue-menu;
-		border-bottom: 4px solid @lightblue-menu-border;
-		vertical-align: middle;
+	background-color: @lightblue-menu;
+	border-bottom: 4px solid @lightblue-menu-border;
+	@media @tablet{
+		margin: 0;
 	}
-	.list li {
+	@media @mobile{
+		border: none;
+		margin: 0;
+	}
+	/*Menu*/
+	.menu {
+		vertical-align: middle;
+		@media @mobile {
+			display: none;
+			background: #E1EEFC;
+			padding: 0 20px;
+		}
+	}
+	.menu li {
 		display: inline-block;
 		a {
 			.link();
@@ -47,54 +74,239 @@ nav {
 			padding: 15px 30px;
 			color: @white;
 			text-transform: uppercase;
-		}
-		a.active {
-			position: relative;
-			&:before, &:after {
-				position: absolute;
-				content: "";
-				width: 0;
-				height: 0;
-				top: 100%;
-				left: 50%;
+			&.active {
+				.activeTriangle(@lightblue-menu-border, @lightblue-menu);
 			}
-			&:before {
-				margin-left: -9px;
-				border-style: solid;
-				border-width: 12px 12px 0 12px;
-				border-color: @lightblue-menu-border transparent transparent transparent;
-			}
-			&:after {
-				margin-left: -3px;
-				border-style: solid;
-				border-width: 7px 6px 0 6px;
-				border-color: @lightblue-menu transparent transparent transparent;
-			}
+			@media @mobile {
+				color: @lightblue-menu;
 
+				&.active {
+					&:before, &:after {
+						display: none;
+					}
+				}
+			}
+		}
+		@media @mobile {
+			display: block;
+			border-top: 1px solid @white;
+			&:first-child {
+				border-top: none;
+			}
 		}
 	}
+	/*Mobile-buttons*/
+	.mobile-buttons {
+		display: none;
+		@media @mobile {
+			.clearfix();
+			display: block;
+		}
+		.active {
+			.activeTriangle(@lightblue-menu, @lightblue-menu);
+		}
+		.notice-button, .about-button {
+			@media @mobile {
+				display: block;
+				width: 30px;
+				height: 30px;
+				font-size: 16px;
+				line-height: 30px;
+				font-weight: bold;
+				margin: 2px;
+				color: #6391C6;
+				text-decoration: none;
+				background: #7CA7D9;
+			}
+		}
+		.about-button {
+			@media @mobile {
+				float: left;
+			}
+		}
+		.notice-button {
+			@media @mobile {
+				float: left;
+			}
+		}
+		.tag-button {
+			@media @mobile {
+				float: left;
+				display: block;
+				width: 30px;
+				height: 30px;
+				margin: 2px;
+				background: #7CA7D9 url("../img/icon-tag.png") no-repeat center;
+			}
+		}
+		.menu-button {
+			@media @mobile {
+				float: right;
+				display: block;
+				width: 30px;
+				height: 30px;
+				margin: 2px;
+				background: url("../img/icon-menu.png") no-repeat center;
+			}
+		}
+	}
+	/*Tablet buttons*/
+	.notice-button, .about-button {
+		display: none;
+		@media @tablet {
+			display: block;
+			padding: 15px 15px 14px;
+			color: @lightblue-menu;
+			background: #7CA7D9;
+			&.active {
+				.activeTriangle(@lightblue-menu-border, @lightblue-menu);
+				&:before, &:after {
+					top: 102%;
+				}
+			}
+		}
+
+	}
+	.about-button {
+		@media @tablet {
+			float: left;
+		}
+
+	}
+	.notice-button {
+		@media @tablet {
+			float: right;
+		}
+
+	}
+
+}
+
+main {
+	.clearfix();
 }
 
 aside {
 	float: right;
 	width: 30%;
+	@media @mobile {
+		float: none;
+		width: auto;
+	}
+	@media @tablet {
+		float: none;
+		width: auto;
+	}
+
 	.message {
 		margin-bottom: 25px;
-		.warning {
-			.asideMessageBullet('!')
+		padding: 25px 50px 10px;
+		@media @mobile {
+			//			display: none;
+			position: relative;
+			padding: 20px 10px;
+			background: #EEF4FA;
 		}
-		.question {
-			.asideMessageBullet('?')
+		@media @tablet {
+			display: none;
+			position: relative;
+		}
+		h2 {
+			.asideMessageTitle();
+
+			.close {
+				display: none;
+			}
+			@media @mobile {
+				position: absolute;
+				margin: 0;
+				border: none;
+				font-weight: bold;
+				bottom: 5px;
+				right: 30px;
+				color: @white;
+				.close {
+					display: inline;
+					width: 30px;
+					height: 30px;
+					background: url("../img/icon-tag.png") no-repeat center;
+				}
+			}
+			@media @tablet {
+				position: absolute;
+				margin: 0;
+				border: none;
+				font-weight: bold;
+				background: #EEF4FA;
+			}
 		}
 	}
-	.message h2 {
-		.asideMessageTitle();
+
+	.message.about {
+		@media @tablet {
+			display: block;
+			min-height: 70px;
+
+		}
+		h2 {
+			.asideMessageBullet('?');
+			@media @mobile {
+				&:before {
+					display: none;
+
+				}
+			}
+			@media @tablet {
+				&:before {
+					display: none;
+
+				}
+
+				top: 33px;
+				left: -33px;
+				transform: rotate(270deg);
+				padding: 9px 30px 10px 10px;
+			}
+		}
+	}
+
+	.message.description {
+		@media @tablet {
+			min-height: 105px;
+		}
+		h2 {
+			.asideMessageBullet('!');
+			@media @mobile {
+				&:before {
+					display: none;
+
+				}
+			}
+			@media @tablet {
+				&:before {
+					display: none;
+				}
+
+				top: 26px;
+				right: -53px;
+				transform: rotate(90deg);
+				padding: 9px 10px 10px 30px;
+
+			}
+		}
 	}
 
 	.message p {
 		.paragraph();
+		@media @tablet {
+
+		}
 	}
 	.tags {
+		@media @tablet {
+			text-align: center;
+			margin: 0 3% 40px;
+		}
 		a {
 			.tag();
 		}
@@ -102,12 +314,26 @@ aside {
 }
 
 .posts {
+	display: none;
 	float: left;
 	width: 65%;
 	margin: 0 5% 0 0;
-
+	@media @mobile {
+		float: none;
+		width: auto;
+		margin: 0;
+	}
+	@media @tablet {
+		float: none;
+		width: auto;
+		margin: 0;
+	}
 	.post {
 		margin-bottom: 60px;
+		@media @tablet {
+			position: relative;
+			padding: 0 10%;
+		}
 		.preview {
 			img {
 				width: 100%;
@@ -147,6 +373,12 @@ aside {
 	}
 	.social {
 		float: right;
+		@media @tablet {
+			float: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 		a {
 			display: inline-block;
 			width: 20px;
@@ -165,6 +397,10 @@ aside {
 			&:first-child {
 				margin-left: 0;
 			}
+			@media @tablet {
+				display: block;
+				margin: 0 0 5px;
+			}
 		}
 		a.facebook {
 			background-position: 0 0;
@@ -178,6 +414,14 @@ aside {
 				background-position: -57px -28px;
 			}
 			padding-left: 23px;
+			@media @tablet {
+				background-position: 4px -28px;
+				&:hover {
+					background-position: -49px -28px;
+				}
+
+				padding-left: 30px;
+			}
 		}
 		a.twitter {
 			background-position: 0 -56px;
@@ -197,6 +441,14 @@ aside {
 				background-position: -57px -112px;
 			}
 			padding-left: 23px;
+			@media @tablet {
+				background-position: 4px -112px;
+				&:hover {
+					background-position: -49px -112px;
+				}
+
+				padding-left: 30px;
+			}
 		}
 	}
 }
