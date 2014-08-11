@@ -7,28 +7,25 @@ body {
 	min-width: 320px;
 }
 
+/*Vendor*/
 /*Mixins*/
-header,
 main {
 	margin: 0 auto;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-	header,
 	main {
 		width: 100%;
 	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-	header,
 	main {
 		width: 100%;
 	}
 }
 
 @media screen and (min-width: 1024px) {
-	header,
 	main {
 		width: 983px;
 	}
@@ -59,13 +56,26 @@ header a .logo {
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
 	header a {
-		font-size: 24px;
+		font-size: 21px;
 		font-weight: bold;
 	}
 
 	header a .logo {
-		width: 30px;
-		height: 30px;
+		width: 32px;
+		height: 32px;
+		background-size: cover;
+		vertical-align: middle;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	header a {
+		font-size: 30px;
+	}
+
+	header a .logo {
+		width: 44px;
+		height: 44px;
 		background-size: cover;
 		vertical-align: middle;
 	}
@@ -92,15 +102,15 @@ nav:after {
 	visibility: hidden;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
 	nav {
+		border: none;
 		margin: 0;
 	}
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
 	nav {
-		border: none;
 		margin: 0;
 	}
 }
@@ -119,6 +129,17 @@ nav .menu {
 
 nav .menu li {
 	display: inline-block;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	nav .menu li {
+		display: block;
+		border-top: 1px solid #ffffff;
+	}
+
+	nav .menu li:first-child {
+		border-top: none;
+	}
 }
 
 nav .menu li a {
@@ -173,33 +194,8 @@ nav .menu li a.active:after {
 	}
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
-	nav .menu li {
-		display: block;
-		border-top: 1px solid #ffffff;
-	}
-
-	nav .menu li:first-child {
-		border-top: none;
-	}
-}
-
 nav .mobile-buttons {
 	display: none;
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-	nav .mobile-buttons {
-		display: block;
-	}
-
-	nav .mobile-buttons:after {
-		display: block;
-		height: 0;
-		clear: both;
-		content: "";
-		visibility: hidden;
-	}
 }
 
 nav .mobile-buttons .active {
@@ -229,6 +225,20 @@ nav .mobile-buttons .active:after {
 	border-style: solid;
 	border-width: 7px 6px 0 6px;
 	border-color: #6b9ad0 transparent transparent transparent;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	nav .mobile-buttons {
+		display: block;
+	}
+
+	nav .mobile-buttons:after {
+		display: block;
+		height: 0;
+		clear: both;
+		content: "";
+		visibility: hidden;
+	}
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -378,11 +388,11 @@ aside {
 
 aside .message {
 	margin-bottom: 25px;
-	padding: 25px 50px 10px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
 	aside .message {
+		display: none;
 		position: relative;
 		padding: 20px 10px;
 		background: #EEF4FA;
@@ -391,6 +401,7 @@ aside .message {
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 	aside .message {
+		padding: 25px 50px 10px;
 		display: none;
 		position: relative;
 	}
@@ -415,15 +426,16 @@ aside .message h2 .close {
 		border: none;
 		font-weight: bold;
 		bottom: 5px;
-		right: 30px;
+		right: 0px;
 		color: #ffffff;
 	}
 
 	aside .message h2 .close {
-		display: inline;
-		width: 30px;
-		height: 30px;
-		background: url("../img/icon-tag.png") no-repeat center;
+		padding: 0 10px;
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		background: url("../img/icon-fold.png") no-repeat center;
 	}
 }
 
@@ -466,6 +478,9 @@ aside .message.about h2:before {
 	aside .message.about h2 {
 		top: 33px;
 		left: -33px;
+		-webkit-transform: rotate(270deg);
+		-o-transform: rotate(270deg);
+		-moz-transform: rotate(270deg);
 		transform: rotate(270deg);
 		padding: 9px 30px 10px 10px;
 	}
@@ -503,6 +518,9 @@ aside .message.description h2:before {
 	aside .message.description h2 {
 		top: 26px;
 		right: -53px;
+		-webkit-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
 		transform: rotate(90deg);
 		padding: 9px 10px 10px 30px;
 	}
@@ -520,10 +538,6 @@ aside .message p {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
 	aside .tags {
 		text-align: center;
 		margin: 0 3% 40px;
@@ -537,7 +551,7 @@ aside .tags a {
 	margin: 0 4px 6px 0;
 	text-decoration: none;
 	display: inline-block;
-	background: #6794b7 url("../img/tag-bullet.jpg") no-repeat right 0;
+	background: #6794b7 url("../img/tag-bullet.png") no-repeat right 0;
 }
 
 aside .tags a:hover {
@@ -545,8 +559,46 @@ aside .tags a:hover {
 	background-position: right -22px;
 }
 
-.posts {
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	aside .tags a {
+		background: #6794b7 url("../img/tag-bullet.png") no-repeat right 0;
+	}
+
+	aside .tags a:hover {
+		background-color: #b2d4ec;
+		background-position: right -22px;
+	}
+}
+
+aside .tags .close {
 	display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	aside .tags {
+		position: relative;
+		padding: 20px 10px;
+		background: #EEF4FA;
+		text-align: center;
+	}
+
+	aside .tags .close {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 0 10px;
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		background: url("../img/icon-fold.png") no-repeat center;
+	}
+
+	aside .tags .close:hover {
+		background: url("../img/icon-fold.png") no-repeat center;
+	}
+}
+
+.posts {
 	float: left;
 	width: 65%;
 	margin: 0 5% 0 0;
@@ -572,10 +624,25 @@ aside .tags a:hover {
 	margin-bottom: 60px;
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	.posts .post {
+		position: relative;
+		padding: 20px 10px 30px;
+		margin: 0;
+	}
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 	.posts .post {
 		position: relative;
 		padding: 0 10%;
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	.posts .post .preview {
+		background: #E2E5E8;
+		text-align: center;
 	}
 }
 
@@ -639,6 +706,15 @@ aside .tags a:hover {
 
 .posts .social {
 	float: right;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	.posts .social {
+		float: none;
+		position: absolute;
+		bottom: 0;
+		left: 10px;
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {

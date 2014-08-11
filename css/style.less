@@ -1,6 +1,6 @@
 @import "base";
 
-header, main {
+main {
 	margin: 0 auto;
 	@media @mobile{
 		width: 100%;
@@ -32,11 +32,20 @@ header {
 			vertical-align: middle;
 		}
 		@media @mobile {
-			font-size: 24px;
+			font-size: 21px;
 			font-weight: bold;
 			.logo {
-				width: 30px;
-				height: 30px;
+				width: 32px;
+				height: 32px;
+				background-size: cover;
+				vertical-align: middle;
+			}
+		}
+		@media @tablet {
+			font-size: 30px;
+			.logo {
+				width: 44px;
+				height: 44px;
 				background-size: cover;
 				vertical-align: middle;
 			}
@@ -50,13 +59,14 @@ nav {
 	text-align: center;
 	background-color: @lightblue-menu;
 	border-bottom: 4px solid @lightblue-menu-border;
-	@media @tablet{
-		margin: 0;
-	}
 	@media @mobile{
 		border: none;
 		margin: 0;
 	}
+	@media @tablet{
+		margin: 0;
+	}
+
 	/*Menu*/
 	.menu {
 		vertical-align: middle;
@@ -68,6 +78,14 @@ nav {
 	}
 	.menu li {
 		display: inline-block;
+		@media @mobile {
+			display: block;
+			border-top: 1px solid @white;
+			&:first-child {
+				border-top: none;
+			}
+		}
+
 		a {
 			.link();
 			display: block;
@@ -87,24 +105,21 @@ nav {
 				}
 			}
 		}
-		@media @mobile {
-			display: block;
-			border-top: 1px solid @white;
-			&:first-child {
-				border-top: none;
-			}
-		}
+
 	}
 	/*Mobile-buttons*/
 	.mobile-buttons {
 		display: none;
+		.active {
+			.activeTriangle(@lightblue-menu, @lightblue-menu);
+		}
+
+
 		@media @mobile {
 			.clearfix();
 			display: block;
 		}
-		.active {
-			.activeTriangle(@lightblue-menu, @lightblue-menu);
-		}
+
 		.notice-button, .about-button {
 			@media @mobile {
 				display: block;
@@ -200,20 +215,19 @@ aside {
 
 	.message {
 		margin-bottom: 25px;
-		padding: 25px 50px 10px;
 		@media @mobile {
-			//			display: none;
+			display: none;
 			position: relative;
 			padding: 20px 10px;
 			background: #EEF4FA;
 		}
 		@media @tablet {
+			padding: 25px 50px 10px;
 			display: none;
 			position: relative;
 		}
 		h2 {
 			.asideMessageTitle();
-
 			.close {
 				display: none;
 			}
@@ -223,13 +237,14 @@ aside {
 				border: none;
 				font-weight: bold;
 				bottom: 5px;
-				right: 30px;
+				right: 0px;
 				color: @white;
 				.close {
-					display: inline;
-					width: 30px;
-					height: 30px;
-					background: url("../img/icon-tag.png") no-repeat center;
+					padding: 0 10px;
+					display: inline-block;
+					width: 18px;
+					height: 18px;
+					background: url("../img/icon-fold.png") no-repeat center;
 				}
 			}
 			@media @tablet {
@@ -253,18 +268,15 @@ aside {
 			@media @mobile {
 				&:before {
 					display: none;
-
 				}
 			}
 			@media @tablet {
 				&:before {
 					display: none;
-
 				}
-
 				top: 33px;
 				left: -33px;
-				transform: rotate(270deg);
+				.transform(rotate(270deg));
 				padding: 9px 30px 10px 10px;
 			}
 		}
@@ -279,17 +291,15 @@ aside {
 			@media @mobile {
 				&:before {
 					display: none;
-
 				}
 			}
 			@media @tablet {
 				&:before {
 					display: none;
 				}
-
 				top: 26px;
 				right: -53px;
-				transform: rotate(90deg);
+				.transform(rotate(90deg));
 				padding: 9px 10px 10px 30px;
 
 			}
@@ -298,9 +308,6 @@ aside {
 
 	.message p {
 		.paragraph();
-		@media @tablet {
-
-		}
 	}
 	.tags {
 		@media @tablet {
@@ -310,11 +317,32 @@ aside {
 		a {
 			.tag();
 		}
+		.close {
+			display: none;
+		}
+		@media @mobile {
+			position: relative;
+			padding: 20px 10px;
+			background: #EEF4FA;
+			text-align: center;
+			.close {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				padding: 0 10px;
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+				background: url("../img/icon-fold.png") no-repeat center;
+				&:hover {
+					background: url("../img/icon-fold.png") no-repeat center;
+				}
+			}
+		}
 	}
 }
 
 .posts {
-	display: none;
 	float: left;
 	width: 65%;
 	margin: 0 5% 0 0;
@@ -330,11 +358,20 @@ aside {
 	}
 	.post {
 		margin-bottom: 60px;
+		@media @mobile {
+			position: relative;
+			padding: 20px 10px 30px;
+			margin: 0;
+		}
 		@media @tablet {
 			position: relative;
 			padding: 0 10%;
 		}
 		.preview {
+			@media @mobile {
+				background: #E2E5E8;
+				text-align: center;
+			}
 			img {
 				width: 100%;
 			}
@@ -373,6 +410,12 @@ aside {
 	}
 	.social {
 		float: right;
+		@media @mobile {
+			float: none;
+			position: absolute;
+			bottom: 0;
+			left: 10px;
+		}
 		@media @tablet {
 			float: none;
 			position: absolute;

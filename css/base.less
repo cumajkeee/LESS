@@ -25,6 +25,14 @@ html, body {
 	min-width: 320px;
 }
 
+/*Vendor*/
+.transform(@arguments) {
+	-webkit-transform: @arguments;
+	-o-transform: @arguments;
+	-moz-transform: @arguments;
+	transform: @arguments;
+}
+
 /*Mixins*/
 .clearfix() {
 	&:after {
@@ -79,10 +87,17 @@ html, body {
 	margin: 0 4px 6px 0;
 	text-decoration: none;
 	display: inline-block;
-	background: @lightblue-text url("../img/tag-bullet.jpg") no-repeat right 0;
+	background: @lightblue-text url("../img/tag-bullet.png") no-repeat right 0;
 	&:hover {
 		background-color: @lightblue-tag;
 		background-position: right -22px;
+	}
+	@media @mobile {
+		background: @lightblue-text url("../img/tag-bullet.png") no-repeat right 0;
+		&:hover {
+			background-color: @lightblue-tag;
+			background-position: right -22px;
+		}
 	}
 }
 
